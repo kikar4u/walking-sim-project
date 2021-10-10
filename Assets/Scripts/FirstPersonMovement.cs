@@ -27,7 +27,8 @@ public class FirstPersonMovement : MonoBehaviour
     {
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
-
+ 
+            
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
         if (speedOverrides.Count > 0)
