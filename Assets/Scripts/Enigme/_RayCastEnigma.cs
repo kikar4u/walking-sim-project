@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class _RayCastEnigma : MonoBehaviour
 {
+    
     public bool isOnSpot = false;
     public float counter = 0.0f;
     private bool isRunning = false;
+    [HideInInspector]
+    public DOOR doorToOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +25,15 @@ public class _RayCastEnigma : MonoBehaviour
     {
         Transform cameraTransform = Camera.main.transform;
         RaycastHit HitInfo;
+
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
         {
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
             if (HitInfo.transform.gameObject.tag == "Enigma" && isOnSpot)
             {
+
+                HitInfo.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
+               
                 if (!isRunning)
                 {
                     isRunning = true;
@@ -47,9 +54,14 @@ public class _RayCastEnigma : MonoBehaviour
         counter = countdownValue;
         while (counter > 0)
         {
-            Debug.Log("Countdown: " + counter);
+            Debug.Log(counter);
             yield return new WaitForSeconds(1.0f);
             counter--;
+        }
+        if(counter == 0)
+        {
+            Debug.Log("énigme trouvée, all good !");
+            doorToOpen.OpenDoor();
         }
     }
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class _Enigme : MonoBehaviour
 {
-    public Vector3 rotationToHave;
+    [SerializeField]
+    Vector3 rotationToHave;
+    [SerializeField] int id;
+    [SerializeField] DOOR door;
     // Start is called before the first frame update
     void Start()
     {
-        
+        id = door.id;
     }
 
     // Update is called once per frame
@@ -20,14 +23,15 @@ public class _Enigme : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-
+            
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
+            other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-
-            other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
+        other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
+        other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
     }
 }
