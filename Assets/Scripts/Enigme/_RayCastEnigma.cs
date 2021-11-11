@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class _RayCastEnigma : MonoBehaviour
 {
-    
+    [SerializeField]
     public bool isOnSpot = false;
     public float counter = 0.0f;
     private bool isRunning = false;
+
     [HideInInspector]
     public DOOR doorToOpen;
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class _RayCastEnigma : MonoBehaviour
     {
         Transform cameraTransform = Camera.main.transform;
         RaycastHit HitInfo;
-
+        Physics.SphereCast(cameraTransform.position, cameraTransform.position.x / 2, transform.forward, out HitInfo, 10);
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
         {
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
@@ -64,4 +65,19 @@ public class _RayCastEnigma : MonoBehaviour
             doorToOpen.OpenDoor();
         }
     }
+/*    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enigma")
+        {
+            StartCoroutine(StartCountdown(10));
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Enigma")
+        {
+            other.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
+            StopAllCoroutines();
+        }
+    }*/
 }

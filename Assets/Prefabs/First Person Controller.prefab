@@ -586,6 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnSpot: 0
   counter: 0
+  doorToOpen: {fileID: 0}
 --- !u!1 &1963958859065967600
 GameObject:
   m_ObjectHideFlags: 0
