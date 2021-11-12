@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class _Enigme : MonoBehaviour
 {
-    [SerializeField]
-    Vector3 rotationToHave;
     [SerializeField] int id;
     [SerializeField] DOOR door;
+    [SerializeField] bool movableObject = false;
+    [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
     // Start is called before the first frame update
     void Start()
     {
         id = door.id;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        foreach (MovableObject item in arrMovObj)
         {
-            
+            if (!item.isOnPlace)
+            {
+                movableObject = false;
+                break;
+            }
+            else
+            {
+                movableObject = true;
+            }
+           
+        }
+        if(other.tag == "Player" && movableObject == true)
+        {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
