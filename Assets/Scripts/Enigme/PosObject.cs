@@ -6,11 +6,16 @@ public class PosObject : MonoBehaviour
 {
     [SerializeField]
     public int idObject;
+    [SerializeField] Quaternion rotationToHave;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "MovableObject" )
+        if(other.gameObject.tag == "MovableObject" && other.gameObject.GetComponent<MovableObject>().idObject == idObject)
         {
             other.GetComponent<MovableObject>().isOnPlace = true;
+            other.gameObject.transform.position = this.gameObject.transform.position;
+            other.gameObject.transform.rotation = rotationToHave;
+            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+
             Debug.Log("LE DEMON MDR");
         }
     }
@@ -18,6 +23,8 @@ public class PosObject : MonoBehaviour
     {
         if (other.gameObject.tag == "MovableObject")
         {
+            other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            other.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
             other.GetComponent<MovableObject>().isOnPlace = false;
             Debug.Log("LE DEMON plus la");
         }

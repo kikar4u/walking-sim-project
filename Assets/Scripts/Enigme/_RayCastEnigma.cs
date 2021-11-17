@@ -39,6 +39,7 @@ public class _RayCastEnigma : MonoBehaviour
                 {
                     isRunning = true;
                     StartCoroutine(StartCountdown(10));
+                    Debug.Log("je suis dans la box");
                 }
 
             }
@@ -63,6 +64,7 @@ public class _RayCastEnigma : MonoBehaviour
         {
             Debug.Log("énigme trouvée, all good !");
             doorToOpen.OpenDoor();
+            
         }
     }
 /*    private void OnTriggerEnter(Collider other)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovableObject : MonoBehaviour
 {
-    [SerializeField]
-    int idObject;
+    
+    public int idObject;
     [SerializeField]
     public bool isOnPlace = false;
 }
