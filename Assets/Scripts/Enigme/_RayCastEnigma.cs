@@ -8,13 +8,15 @@ public class _RayCastEnigma : MonoBehaviour
     public bool isOnSpot = false;
     public float counter = 0.0f;
     private bool isRunning = false;
+    public _Enigme enigmeTrigger;
 
     [HideInInspector]
     public DOOR doorToOpen;
+    public GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
-        
+       GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -38,7 +40,13 @@ public class _RayCastEnigma : MonoBehaviour
                 if (!isRunning)
                 {
                     isRunning = true;
-                    StartCoroutine(StartCountdown(10));
+                    if (GM.CheckEnigma(enigmeTrigger))
+                    {
+                        StartCoroutine(StartCountdown(enigmeTrigger, 5));
+                        
+                    }
+
+                    
                     Debug.Log("je suis dans la box");
                 }
 
@@ -51,7 +59,7 @@ public class _RayCastEnigma : MonoBehaviour
             isRunning = false;
         }
     }
-    public IEnumerator StartCountdown(float countdownValue = 10)
+    public IEnumerator StartCountdown(_Enigme enigma, float countdownValue = 10 )
     {
         counter = countdownValue;
         while (counter > 0)
@@ -62,24 +70,29 @@ public class _RayCastEnigma : MonoBehaviour
         }
         if(counter == 0)
         {
+            
             Debug.Log("énigme trouvée, all good !");
-            doorToOpen.OpenDoor();
+            if(doorToOpen != null)
+            {
+                doorToOpen.OpenDoor();
+            }
+
+            enigma.isActivated = true;
             
         }
     }
-/*    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enigma")
+        if (other.gameObject.tag == "enigmeTri")
         {
-            StartCoroutine(StartCountdown(10));
+            enigmeTrigger = other.gameObject.GetComponent<_Enigme>();
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Enigma")
+        if (other.gameObject.tag == "enigmeTri")
         {
-            other.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
-            StopAllCoroutines();
+            enigmeTrigger = null;
         }
-    }*/
+    }
 }

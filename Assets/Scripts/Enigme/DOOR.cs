@@ -6,6 +6,7 @@ public class DOOR : MonoBehaviour
 {
     
     public int id;
+    
 
     private void Awake()
     {
