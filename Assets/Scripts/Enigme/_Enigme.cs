@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class _Enigme : MonoBehaviour
 {
-    [SerializeField] int id;
+    [SerializeField] public int id;
     [SerializeField] DOOR door;
     [SerializeField] bool movableObject = false;
     [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
+    public bool isActivated;
     // Start is called before the first frame update
     void Start()
     {
-        id = door.id;
+        isActivated = false;
+        if(door != null)
+        {
+            id = door.id;
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
