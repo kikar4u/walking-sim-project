@@ -17,6 +17,7 @@ public class _RayCastEnigma : MonoBehaviour
     void Start()
     {
        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+       
     }
 
     // Update is called once per frame
@@ -40,13 +41,7 @@ public class _RayCastEnigma : MonoBehaviour
                 if (!isRunning)
                 {
                     isRunning = true;
-                    if (GM.CheckEnigma(enigmeTrigger))
-                    {
-                        StartCoroutine(StartCountdown(enigmeTrigger, 5));
-                        
-                    }
-
-                    
+                    StartCoroutine(StartCountdown(enigmeTrigger, 5));
                     Debug.Log("je suis dans la box");
                 }
 
@@ -72,12 +67,10 @@ public class _RayCastEnigma : MonoBehaviour
         {
             
             Debug.Log("énigme trouvée, all good !");
-            if(doorToOpen != null)
-            {
-                doorToOpen.OpenDoor();
-            }
-
             enigma.isActivated = true;
+            doorToOpen.OpenDoor();
+
+            
             
         }
     }

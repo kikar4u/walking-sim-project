@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    // no longer used
     public bool CheckEnigma(_Enigme enigma)
     {
         _Enigme a = enigmeList.Find((x) => x == enigma);
