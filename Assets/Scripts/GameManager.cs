@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
             
         }
         enigmeList = enigmeList.OrderBy(w => w.id).ToList();
+
     }
     // faire une fonction pour vérifier que l'énigme précédente à bien été faites ici, fonction qu'on appellera 
     // dans le reste enigme.cs

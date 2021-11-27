@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class _RayCastEnigma : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class _RayCastEnigma : MonoBehaviour
     public float counter = 0.0f;
     private bool isRunning = false;
     public _Enigme enigmeTrigger;
-
+    public VisualEffect feedBackParticle;
+    public AnimationCurve curve;
+    private VisualEffect Vfx;
     [HideInInspector]
     public DOOR doorToOpen;
     public GameManager GM;
@@ -41,7 +44,13 @@ public class _RayCastEnigma : MonoBehaviour
                 if (!isRunning)
                 {
                     isRunning = true;
+                    curve.keys[1].time = 5.0f;
                     StartCoroutine(StartCountdown(enigmeTrigger, 5));
+                    Vfx = GameObject.Instantiate(feedBackParticle);
+                    Vfx.transform.position = HitInfo.point;
+                    Vfx.transform.rotation = HitInfo.transform.rotation * new Quaternion(-90,0,0,0);
+                    //Vfx.SetVector3("Position", HitInfo.transform.position);
+                    Vfx.SendEvent("OnPlay");
                     Debug.Log("je suis dans la box");
                 }
 
@@ -59,9 +68,14 @@ public class _RayCastEnigma : MonoBehaviour
         counter = countdownValue;
         while (counter > 0)
         {
-            Debug.Log(counter);
+            
+            //Debug.Log(counter);
             yield return new WaitForSeconds(1.0f);
             counter--;
+            Vfx.SetFloat("Radius", counter);
+            Debug.Log(Vfx.GetFloat("Radius") + "Radius");
+            Vfx.SetFloat("Y", countdownValue);
+            Vfx.SetAnimationCurve("Curve", curve);
         }
         if(counter == 0)
         {
@@ -69,7 +83,7 @@ public class _RayCastEnigma : MonoBehaviour
             Debug.Log("énigme trouvée, all good !");
             enigma.isActivated = true;
             doorToOpen.OpenDoor();
-
+            Vfx.SendEvent("OnStop");
             
             
         }
