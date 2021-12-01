@@ -1511,7 +1511,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614633}
       inputSlot: {fileID: 8926484042661614658}
-    position: {x: 753, y: 903}
+    position: {x: 727, y: 1550}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614633
@@ -1649,7 +1649,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5
+      m_SerializableObject: 0.45
     m_Space: 2147483647
   m_Property:
     name: smoothness
@@ -1921,7 +1921,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 23.45
+      m_SerializableObject: 50
     m_Space: 2147483647
   m_Property:
     name: emissiveScale

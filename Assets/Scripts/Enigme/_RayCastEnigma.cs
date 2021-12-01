@@ -84,7 +84,7 @@ public class _RayCastEnigma : MonoBehaviour
             enigma.isActivated = true;
             doorToOpen.OpenDoor();
             Vfx.SendEvent("OnStop");
-            
+            Destroy(Vfx);
             
         }
     }
