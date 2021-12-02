@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Lantern_lambert7SG
+    second: {fileID: 2100000, guid: 9f06f4723973d9e4981bfd471433f056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: d458846df98ed7040b543e2152217cdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: defaultMat
     second: {fileID: 2100000, guid: 3504a7d0e067ca944b5ccbb757dca7c8, type: 2}
   materials:
