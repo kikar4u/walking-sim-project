@@ -705,6 +705,12 @@ MonoBehaviour:
   counter: 0
   enigmeTrigger: {fileID: 0}
   feedBackParticle: {fileID: 0}
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   doorToOpen: {fileID: 0}
   GM: {fileID: 0}
 --- !u!1 &1963958859065967600
@@ -878,7 +884,7 @@ GameObject:
   - component: {fileID: 7526749914869408993}
   m_Layer: 0
   m_Name: Destination
-  m_TagString: Untagged
+  m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

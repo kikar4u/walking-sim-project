@@ -5,10 +5,12 @@ using UnityEngine;
 public class ObjectGrab : MonoBehaviour
 {
     [SerializeField]
-    public Transform Destination;
+    private Transform Destination;
 
+    
     private void OnMouseDown()
     {
+        Destination = GameObject.FindGameObjectWithTag("Destination").transform;
         GetComponent<MeshCollider>().isTrigger = true;
         GetComponent<Rigidbody>().isKinematic = true;
         this.transform.position = Destination.position;
