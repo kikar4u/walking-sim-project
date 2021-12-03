@@ -13,8 +13,9 @@ public class ObjectGrab : MonoBehaviour
         Destination = GameObject.FindGameObjectWithTag("Destination").transform;
         GetComponent<MeshCollider>().isTrigger = true;
         GetComponent<Rigidbody>().isKinematic = true;
-        this.transform.position = Destination.position;
         this.transform.parent = GameObject.Find("Destination").transform;
+        this.transform.position = Destination.position;
+        
     }
     private void OnMouseUp()
     {

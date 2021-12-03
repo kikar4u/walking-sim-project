@@ -15,7 +15,9 @@ public class _RayCastEnigma : MonoBehaviour
     private VisualEffect Vfx;
     [HideInInspector]
     public DOOR doorToOpen;
+    [HideInInspector]
     public GameManager GM;
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -34,12 +34,12 @@ public class _Enigme : MonoBehaviour
             }
            
         }
-        if(other.tag == "Player" && arrMovObj.Count == 0)
+        if(other.tag == "Player" && arrMovObj.Count == 0 && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
-        else if(other.tag == "Player" && movableObject == true)
+        else if(other.tag == "Player" && movableObject == true && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
