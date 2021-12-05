@@ -8,6 +8,7 @@ public class _Enigme : MonoBehaviour
     [SerializeField] DOOR door;
     [SerializeField] bool movableObject = false;
     [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
+    [SerializeField] public LightsFeedBackEnigma lightToActivate;
     public bool isActivated;
     // Start is called before the first frame update
     void Start()
@@ -50,5 +51,12 @@ public class _Enigme : MonoBehaviour
     {
         other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
         other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
+    }
+    private void Update()
+    {
+        if (isActivated && lightToActivate != null)
+        {
+            lightToActivate.isEnigma = true;
+        }
     }
 }
