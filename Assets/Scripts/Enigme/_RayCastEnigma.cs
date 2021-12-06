@@ -63,6 +63,7 @@ public class _RayCastEnigma : MonoBehaviour
         if (!isOnSpot)
         {
             StopAllCoroutines();
+            Destroy(Vfx);
             isRunning = false;
         }
     }
