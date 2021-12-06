@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOnSpot: 0
-  counter: 0
+  counter: 5
   enigmeTrigger: {fileID: 0}
   feedBackParticle: {fileID: 3589037548394487353, guid: 676048875a7b56844a94b67f3716bbcd, type: 3}
   curve:

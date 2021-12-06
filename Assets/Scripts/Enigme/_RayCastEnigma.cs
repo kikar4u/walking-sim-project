@@ -7,7 +7,8 @@ public class _RayCastEnigma : MonoBehaviour
 {
     [SerializeField]
     public bool isOnSpot = false;
-    public float counter = 0.0f;
+    public float timeToEnigma = 5.0f;
+    private float counter = 0.0f;
     private bool isRunning = false;
     public _Enigme enigmeTrigger;
     public VisualEffect feedBackParticle;
@@ -47,7 +48,7 @@ public class _RayCastEnigma : MonoBehaviour
                 {
                     isRunning = true;
                     curve.keys[1].time = 5.0f;
-                    StartCoroutine(StartCountdown(enigmeTrigger, 5));
+                    StartCoroutine(StartCountdown(enigmeTrigger, timeToEnigma));
                     Vfx = GameObject.Instantiate(feedBackParticle);
                     Vfx.transform.position = HitInfo.point;
                     Vfx.transform.rotation = HitInfo.transform.rotation * new Quaternion(-90,0,0,0);
