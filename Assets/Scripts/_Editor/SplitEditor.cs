@@ -15,23 +15,24 @@ public class SplitEditor : MonoBehaviour
     private void OnEnable()
     {   
 
-        targetObject = gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
+        //targetObject = gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
         splitObject.Clear();
         cellsPosition.Clear();
         cellsScale.Clear();
-        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             Debug.Log(gameObject.transform.childCount);
             splitObject.Add(gameObject.transform.GetChild(i).gameObject);
             cellsPosition.Add(gameObject.transform.GetChild(i).localPosition);
             cellsScale.Add(gameObject.transform.GetChild(i).lossyScale.x);
         }
-        targetObject.transform.position = targetPosition;
+        //targetObject = Instantiate(new GameObject("targetPosition"), gameObject.transform);
+        //targetObject.transform.position = targetPosition;
 
     }
     private void OnValidate()
     {
-        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             Transform oldParent = transform.parent;
             transform.parent = null;
