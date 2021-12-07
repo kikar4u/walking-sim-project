@@ -15,11 +15,11 @@ public class SplitEditor : MonoBehaviour
     private void OnEnable()
     {   
 
-        //targetObject = gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
+        targetObject = gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
         splitObject.Clear();
         cellsPosition.Clear();
         cellsScale.Clear();
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
         {
             Debug.Log(gameObject.transform.childCount);
             splitObject.Add(gameObject.transform.GetChild(i).gameObject);
@@ -27,12 +27,12 @@ public class SplitEditor : MonoBehaviour
             cellsScale.Add(gameObject.transform.GetChild(i).lossyScale.x);
         }
         //targetObject = Instantiate(new GameObject("targetPosition"), gameObject.transform);
-        //targetObject.transform.position = targetPosition;
+        
 
     }
     private void OnValidate()
     {
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
         {
             Transform oldParent = transform.parent;
             transform.parent = null;
@@ -41,6 +41,11 @@ public class SplitEditor : MonoBehaviour
             splitObject[i].transform.localPosition = cellsPosition[i];
             
         }
+        if(targetObject != null)
+        {
+            targetObject.transform.localPosition = targetPosition;
+        }
+
     }
     // Start is called before the first frame update
 
