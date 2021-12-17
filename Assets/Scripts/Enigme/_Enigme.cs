@@ -6,6 +6,7 @@ public class _Enigme : MonoBehaviour
 {
     [SerializeField] public int id;
     [SerializeField] DOOR door;
+    private List<DOOR> listDoor;
     [SerializeField] bool movableObject = false;
     [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
     [SerializeField] public LightsFeedBackEnigma lightToActivate;
@@ -13,6 +14,7 @@ public class _Enigme : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         isActivated = false;
         if(door != null)
         {
@@ -38,17 +40,20 @@ public class _Enigme : MonoBehaviour
         if(other.tag == "Player" && arrMovObj.Count == 0 && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
+            other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
         else if(other.tag == "Player" && movableObject == true && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
+            other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        other.gameObject.GetComponent<_RayCastEnigma>().currentID = 600;
         other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
         other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
     }

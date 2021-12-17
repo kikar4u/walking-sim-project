@@ -15,6 +15,7 @@ public class _RayCastEnigma : MonoBehaviour
     public AnimationCurve curve;
     private VisualEffect Vfx;
     [HideInInspector]
+    public int currentID;
     public DOOR doorToOpen;
     [HideInInspector]
     public GameManager GM;
@@ -86,7 +87,15 @@ public class _RayCastEnigma : MonoBehaviour
             
             Debug.Log("énigme trouvée, all good !");
             enigma.isActivated = true;
-            doorToOpen.OpenDoor();
+            GameObject[] a = GameObject.FindGameObjectsWithTag("door");
+            for (int i = 0; i < a.Length; i++)
+            {
+                if(a[i].gameObject.GetComponent<DOOR>().id == currentID)
+                {
+                    a[i].gameObject.GetComponent<DOOR>().OpenDoor();
+                }
+            }
+            //doorToOpen.OpenDoor();
             Vfx.SendEvent("OnStop");
             Destroy(Vfx);
             
