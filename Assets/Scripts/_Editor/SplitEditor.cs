@@ -6,7 +6,7 @@ using UnityEditor;
 public class SplitEditor : MonoBehaviour
 {
     public int MaxWinDistance;
-    public Vector3 targetPosition;
+
     public List<GameObject> splitObject;
     private GameObject targetObject;
     public List<Vector3> cellsPosition;
@@ -27,11 +27,19 @@ public class SplitEditor : MonoBehaviour
             cellsPosition.Add(gameObject.transform.GetChild(i).localPosition);
             
             cellsScale.Add(gameObject.transform.GetChild(i).lossyScale.x);
-            //splitObject[i].transform.localPosition = new Vector3(Random.Range(0, 50), splitObject[i].transform.localPosition.y, splitObject[i].transform.localPosition.z);
+            //
         }
         //targetObject = Instantiate(new GameObject("targetPosition"), gameObject.transform);
         
 
+    }
+    [ContextMenu("Randomize")]
+    private void Randomizer()
+    {
+        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
+        {
+            splitObject[i].transform.localPosition = new Vector3(Random.Range(0, 50), splitObject[i].transform.localPosition.y, splitObject[i].transform.localPosition.z);
+        }
     }
     private void OnValidate()
     {
@@ -44,10 +52,7 @@ public class SplitEditor : MonoBehaviour
             splitObject[i].transform.localPosition = cellsPosition[i];
             
         }
-        if(targetObject != null)
-        {
-            targetObject.transform.localPosition = targetPosition;
-        }
+
 
     }
     // Start is called before the first frame update
@@ -56,21 +61,26 @@ public class SplitEditor : MonoBehaviour
     void Update()
     {
         //Vector3 relativePosition;
-/*        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
-        {
-            splitObject[i].transform.LookAt(empty.transform, Vector3.up);
-        }*/
+        /*        for (int i = 0; i < gameObject.transform.childCount - 1; i++)
+                {
+                    splitObject[i].transform.LookAt(empty.transform, Vector3.up);
+                }*/
         // returns the position of followGO relative to the steeringwheel
         // but in the local transform space of the steering wheel itself
         //relativePosition = transform.InverseTransformDirection(empty.transform.localPosition);
         // you want to eliminate the local difference in Y direction
         //relativePosition.y = 0;
-
+        if(empty != null)
+        {
+            transform.LookAt(empty.transform, Vector3.up);
+        }
         // since you are right and LookAt expects a world position after eliminating the local Y difference 
         // we convert it back to world space
         // var targetPosition = transform.TransformPoint(relativePosition);
+        //transform.rotation = Quaternion.identity;
 
-        transform.LookAt(empty.transform, transform.up);
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 90.0f, transform.eulerAngles.z);
+
 
 
 
