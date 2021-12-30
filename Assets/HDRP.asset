@@ -443,6 +443,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86129863609412f4b9f64b80e61affd3, type: 2}
   - {fileID: 11400000, guid: 35e6d346d67760b48a227c240492f20f, type: 2}
   - {fileID: 11400000, guid: 542888e9c4de0c74c8d4aa6f98635c90, type: 2}
+  - {fileID: 11400000, guid: 74a5a7051fac98344baa6167a12ca6b8, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
