@@ -9,7 +9,7 @@ public class _Enigme : MonoBehaviour
     private List<DOOR> listDoor;
     [SerializeField] bool movableObject = false;
     [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
-    [SerializeField] public LightsFeedBackEnigma lightToActivate;
+    [SerializeField] public LightsFeedBackEnigma[] lightsToActivate;
     public bool isActivated;
     // Start is called before the first frame update
     void Start()
@@ -59,9 +59,13 @@ public class _Enigme : MonoBehaviour
     }
     private void Update()
     {
-        if (isActivated && lightToActivate != null)
+        if (isActivated && lightsToActivate != null && lightsToActivate.Length != 0)
         {
-            lightToActivate.isEnigma = true;
+            for (int i = 0; i < lightsToActivate.Length; i++)
+            {
+                lightsToActivate[i].isEnigma = true;
+            }
+
         }
     }
 }
