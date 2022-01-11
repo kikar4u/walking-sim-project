@@ -6,6 +6,13 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.radiatoryang.hedera": {
+      "version": "https://github.com/radiatoryang/hedera.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fbd5cb7cc23ea177b1c16cfa88f6d4aa48b972cd"
+    },
     "com.unity.collab-proxy": {
       "version": "1.9.0",
       "depth": 0,
