@@ -50,7 +50,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -374,12 +374,12 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 4000000
-      inSlope: 7657778.5
-      outSlope: 7657778.5
+      value: 40000
+      inSlope: 96891.25
+      outSlope: 96891.25
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.062585056
+      inWeight: 0.048030734
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

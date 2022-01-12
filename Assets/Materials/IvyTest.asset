@@ -23,18 +23,18 @@ MonoBehaviour:
     branchMaterial: {fileID: 2100000, guid: d3c9e70843fc5c744adf852912b68b6d, type: 2}
     leafMaterial: {fileID: 2100000, guid: 969642582164f974ca5f2c05cdd4633d, type: 2}
     ivyStepDistance: 0.1
-    ivyLeafSize: 0.169
-    ivyBranchSize: 0.109
+    ivyLeafSize: 0.18
+    ivyBranchSize: 0.071
     maxFloatLength: 1
     maxAdhesionDistance: 1
-    minLength: 8
-    maxLength: 10
+    minLength: 4.115
+    maxLength: 6.115
     maxBranchesTotal: 64
     primaryWeight: 0.5
-    randomWeight: 0.64
+    randomWeight: 1.74
     gravityWeight: 3
     adhesionWeight: 1
-    branchingProbability: 0.34
+    branchingProbability: 0.69
     leafProbability: 1
     leafSunlightBonus: 1
     branchOptimize: 0.5
