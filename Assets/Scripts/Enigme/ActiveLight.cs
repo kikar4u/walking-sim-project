@@ -8,7 +8,8 @@ public class ActiveLight : MonoBehaviour
     public GameObject pointLight;
     public AnimationCurve curveAnim;
     private float curveDeltaTime = 0.0f;
-    private bool isActive = false;
+    [HideInInspector]
+    public bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class ActiveLight : MonoBehaviour
         curveDeltaTime += Time.deltaTime;
         currentLumen = curveAnim.Evaluate(curveDeltaTime);      // Update the current position of the sphere
         lightIntensity.intensity = currentLumen;
-        Debug.Log("Intensity" + lightIntensity.intensity);
+        //Debug.Log("Intensity" + lightIntensity.intensity);
     }
     private void turnOffLights()
     {
@@ -38,7 +39,7 @@ public class ActiveLight : MonoBehaviour
         curveDeltaTime -= Time.deltaTime;
         currentLumen = curveAnim.Evaluate(curveDeltaTime);      // Update the current position of the sphere
         lightIntensity.intensity = currentLumen;
-        Debug.Log("Intensity" + lightIntensity.intensity);
+        //Debug.Log("Intensity" + lightIntensity.intensity);
     }
     public IEnumerator AnimateLights(float speed)
     {
