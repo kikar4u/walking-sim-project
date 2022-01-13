@@ -82,9 +82,13 @@ public class _Enigme : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<_RayCastEnigma>().currentID = 600;
-        other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
-        other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
+        if(other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<_RayCastEnigma>().currentID = 600;
+            other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
+            other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = false;
+        }
+
     }
     private void Update()
     {
