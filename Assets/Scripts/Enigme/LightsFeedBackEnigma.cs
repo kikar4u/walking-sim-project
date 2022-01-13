@@ -37,7 +37,7 @@ public class LightsFeedBackEnigma : MonoBehaviour
         curveDeltaTime += Time.deltaTime;
         currentLumen = curveAnim.Evaluate(curveDeltaTime);      // Update the current position of the sphere
         lightIntensity.intensity = currentLumen;
-        Debug.Log("Intensity" + lightIntensity.intensity);
+        //Debug.Log("Intensity" + lightIntensity.intensity);
     }
     public IEnumerator AnimateLights(float speed)
     {

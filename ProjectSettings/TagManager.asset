@@ -10,6 +10,7 @@ TagManager:
   - GameManager
   - enigmeTri
   - Destination
+  - OOB
   layers:
   - Default
   - TransparentFX

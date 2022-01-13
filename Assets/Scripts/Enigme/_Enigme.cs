@@ -9,12 +9,14 @@ public class _Enigme : MonoBehaviour
     private List<DOOR> listDoor;
     [SerializeField] bool movableObject = false;
     [SerializeField] List<MovableObject> arrMovObj = new List<MovableObject>();
-    [SerializeField] public LightsFeedBackEnigma lightToActivate;
+    [SerializeField] public LightsFeedBackEnigma[] feedBackLights;
+    [SerializeField] public List<ActiveLight> mustActiveLights;
     public bool isActivated;
+    private bool lightsAreOn;
     // Start is called before the first frame update
     void Start()
     {
-
+        lightsAreOn = false;
         isActivated = false;
         if(door != null)
         {
@@ -37,17 +39,44 @@ public class _Enigme : MonoBehaviour
             }
            
         }
-        if(other.tag == "Player" && arrMovObj.Count == 0 && !isActivated)
+        if(other.tag == "Player" && arrMovObj.Count == 0 && mustActiveLights.Count == 0  && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
             other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
-        else if(other.tag == "Player" && movableObject == true && !isActivated)
+        else if (other.tag == "Player" && (mustActiveLights.Count > 0  || movableObject == true) && !isActivated)
         {
-            other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
-            other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
-            other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
+            if (other.tag == "Player" && movableObject == true && !isActivated)
+            {
+
+
+            }
+            else
+            {
+                int i = 0;
+                while (i < mustActiveLights.Count)
+                {
+                    if (mustActiveLights[i].isActive)
+                    {
+                        Debug.Log("lights are true");
+                        lightsAreOn = true;
+                    }
+                    else
+                    {
+                        lightsAreOn = false;
+                    }
+                    i++;
+                }
+                if (lightsAreOn)
+                {
+                    other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
+                    other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
+                    other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
+                    
+                }
+            }
+
         }
     }
 
@@ -59,9 +88,13 @@ public class _Enigme : MonoBehaviour
     }
     private void Update()
     {
-        if (isActivated && lightToActivate != null)
+        if (isActivated && feedBackLights != null && feedBackLights.Length != 0)
         {
-            lightToActivate.isEnigma = true;
+            for (int i = 0; i < feedBackLights.Length; i++)
+            {
+                feedBackLights[i].isEnigma = true;
+            }
+
         }
     }
 }
