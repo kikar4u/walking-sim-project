@@ -11,9 +11,12 @@ public class _RayCastEnigma : MonoBehaviour
     private float counter = 0.0f;
     private bool isRunning = false;
     public _Enigme enigmeTrigger;
+    public GameObject feedbackEffect;
     public VisualEffect feedBackParticle;
     public AnimationCurve curve;
     private VisualEffect Vfx;
+    private GameObject Vfx2;
+    private ParticleSystem pSystem;
     [HideInInspector]
     public int currentID;
     public DOOR doorToOpen;
@@ -24,14 +27,8 @@ public class _RayCastEnigma : MonoBehaviour
     void Start()
     {
        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         Transform cameraTransform = Camera.main.transform;
@@ -40,7 +37,7 @@ public class _RayCastEnigma : MonoBehaviour
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
         {
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
-            if (HitInfo.transform.gameObject.tag == "Enigma" && isOnSpot)
+            if (HitInfo.transform.CompareTag("Enigma") && isOnSpot)
             {
 
                 HitInfo.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
@@ -48,13 +45,21 @@ public class _RayCastEnigma : MonoBehaviour
                 if (!isRunning)
                 {
                     isRunning = true;
-                    curve.keys[1].time = 5.0f;
+                    curve.keys[1].time = timeToEnigma;
+                    pSystem = feedbackEffect.transform.GetChild(1).GetComponent<ParticleSystem>();
+                    var main = pSystem.main;
+                    main.duration = timeToEnigma;
+                    
                     StartCoroutine(StartCountdown(enigmeTrigger, timeToEnigma));
-                    Vfx = GameObject.Instantiate(feedBackParticle);
-                    Vfx.transform.position = HitInfo.point;
-                    Vfx.transform.rotation = HitInfo.transform.rotation * new Quaternion(-90,0,0,0);
-                    //Vfx.SetVector3("Position", HitInfo.transform.position);
-                    Vfx.SendEvent("OnPlay");
+                    Vfx2 = GameObject.Instantiate(feedbackEffect);
+                    Vfx2.transform.position = HitInfo.point;
+                    Vfx2.transform.rotation = HitInfo.transform.rotation;
+                    
+                    //Vfx = GameObject.Instantiate(feedBackParticle);
+                    //Vfx.transform.position = HitInfo.point;
+                    //Vfx.transform.rotation = HitInfo.transform.rotation * new Quaternion(-90,0,0,0);
+                    // No use Vfx.SetVector3("Position", HitInfo.transform.position);
+                    //Vfx.SendEvent("OnPlay");
                     Debug.Log("je suis dans la box");
                 }
 
@@ -64,23 +69,29 @@ public class _RayCastEnigma : MonoBehaviour
         if (!isOnSpot)
         {
             StopAllCoroutines();
-            Destroy(Vfx);
+            Destroy(Vfx2);
+            //Destroy(Vfx);
             isRunning = false;
         }
     }
     public IEnumerator StartCountdown(_Enigme enigma, float countdownValue = 10 )
     {
         counter = countdownValue;
+
         while (counter > 0)
         {
-            
+
             //Debug.Log(counter);
+            var main = pSystem.shape;
+            main.radius = 2.5f;
+            
+
             yield return new WaitForSeconds(1.0f);
             counter--;
-            Vfx.SetFloat("Radius", counter);
-            Debug.Log(Vfx.GetFloat("Radius") + "Radius");
-            Vfx.SetFloat("Y", countdownValue);
-            Vfx.SetAnimationCurve("Curve", curve);
+            //Vfx.SetFloat("Radius", counter);
+            //Debug.Log(Vfx.GetFloat("Radius") + "Radius");
+            //Vfx.SetFloat("Y", countdownValue);
+            //Vfx.SetAnimationCurve("Curve", curve);
         }
         if(counter == 0)
         {
@@ -96,7 +107,7 @@ public class _RayCastEnigma : MonoBehaviour
                 }
             }
             //doorToOpen.OpenDoor();
-            Vfx.SendEvent("OnStop");
+            //Vfx.SendEvent("OnStop");
             //Destroy(Vfx);
             
         }

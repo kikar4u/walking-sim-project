@@ -11,14 +11,14 @@ public class OutOfBound : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enigmeTri")
+        if (other.gameObject.CompareTag("enigmeTri"))
         {
             lastPos = gameObject.transform.position;
         }
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "OOB")
+        if (other.gameObject.CompareTag("OOB"))
         {
             gameObject.transform.position = lastPos;
         }

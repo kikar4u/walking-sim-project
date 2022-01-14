@@ -39,15 +39,15 @@ public class _Enigme : MonoBehaviour
             }
            
         }
-        if(other.tag == "Player" && arrMovObj.Count == 0 && mustActiveLights.Count == 0  && !isActivated)
+        if(other.CompareTag("Player") && arrMovObj.Count == 0 && mustActiveLights.Count == 0  && !isActivated)
         {
             other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
             other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
         }
-        else if (other.tag == "Player" && (mustActiveLights.Count > 0  || movableObject == true) && !isActivated)
+        else if (other.CompareTag("Player") && (mustActiveLights.Count > 0  || movableObject == true) && !isActivated)
         {
-            if (other.tag == "Player" && movableObject == true && !isActivated)
+            if (other.CompareTag("Player") && movableObject == true && !isActivated)
             {
 
 
@@ -82,7 +82,7 @@ public class _Enigme : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<_RayCastEnigma>().currentID = 600;
             other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = null;
