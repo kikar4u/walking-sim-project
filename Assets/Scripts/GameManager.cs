@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
         GameObject[] arrG = GameObject.FindGameObjectsWithTag("enigmeTri");
         foreach (GameObject item in arrG)
         {
-            enigmeList.Add(item.GetComponent<_Enigme>());
-
-            
+            enigmeList.Add(item.GetComponent<_Enigme>());   
         }
         enigmeList = enigmeList.OrderBy(w => w.id).ToList();
 
@@ -23,15 +21,11 @@ public class GameManager : MonoBehaviour
     // faire une fonction pour vérifier que l'énigme précédente à bien été faites ici, fonction qu'on appellera 
     // dans le reste enigme.cs
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     // no longer used
     public bool CheckEnigma(_Enigme enigma)
     {
         _Enigme a = enigmeList.Find((x) => x == enigma);
-        //Debug.Log(a);
+        
         if (a.id == 0)
         {
             return true;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using DigitalRuby.SoundManagerNamespace;
 
 public class _RayCastEnigma : MonoBehaviour
 {
@@ -22,11 +23,14 @@ public class _RayCastEnigma : MonoBehaviour
     public DOOR doorToOpen;
     [HideInInspector]
     public GameManager GM;
+    public SoundFXManager SoundM;
     
     // Start is called before the first frame update
     void Start()
     {
        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+       SoundM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundFXManager>();
+
     }
 
     private void FixedUpdate()
@@ -74,6 +78,7 @@ public class _RayCastEnigma : MonoBehaviour
             isRunning = false;
         }
     }
+
     public IEnumerator StartCountdown(_Enigme enigma, float countdownValue = 10 )
     {
         counter = countdownValue;
@@ -99,11 +104,16 @@ public class _RayCastEnigma : MonoBehaviour
             Debug.Log("énigme trouvée, all good !");
             enigma.isActivated = true;
             GameObject[] a = GameObject.FindGameObjectsWithTag("door");
+            
             for (int i = 0; i < a.Length; i++)
             {
                 if(a[i].gameObject.GetComponent<DOOR>().id == currentID)
                 {
+                    SoundM.PlaySound(0);
                     a[i].gameObject.GetComponent<DOOR>().OpenDoor();
+                    
+
+
                 }
             }
             //doorToOpen.OpenDoor();

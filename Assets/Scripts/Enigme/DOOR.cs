@@ -8,11 +8,6 @@ public class DOOR : MonoBehaviour
     public int id;
     [HideInInspector]
     public List<_Enigme> enigmeList;
-
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         enigmeList = new List<_Enigme>();
