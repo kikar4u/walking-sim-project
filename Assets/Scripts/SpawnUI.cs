@@ -11,7 +11,7 @@ public class SpawnUI : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            instance = Instantiate(UI, gameObject.transform.position + new Vector3(0,1,0), Quaternion.identity);
+            instance = Instantiate(UI, gameObject.transform.position + new Vector3(0,gameObject.GetComponent<BoxCollider>().size.y + 0.5f,0), Quaternion.identity);
             instance.transform.SetParent(null, false);
             //instance.transform.rotation = Quaternion.identity;
         }

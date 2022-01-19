@@ -22,15 +22,11 @@ public class ChangeMesh : MonoBehaviour
     {
         mf = transform.GetComponent<MeshFilter>();
         mc = transform.GetComponent<MeshCollider>();
-        if(mesh != null)
-        {
-            mesh = Mesh.Instantiate(org) as Mesh;
-            mf.sharedMesh = mesh;
-            mc.sharedMesh = mesh;
-            updatecolor();
-            isenabled = true;
-        }
-
+        mesh = Mesh.Instantiate(org) as Mesh;
+        mf.sharedMesh = mesh;
+        mc.sharedMesh = mesh;
+        updatecolor();
+        isenabled = true;
     }
 
     void OnValidate()

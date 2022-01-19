@@ -7,14 +7,24 @@ public class PosObject : MonoBehaviour
     [SerializeField]
     public int idObject;
     [SerializeField] Quaternion rotationToHave;
+    [SerializeField] Vector3 positionToHave;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "MovableObject" && other.gameObject.GetComponent<MovableObject>().idObject == idObject)
         {
             other.GetComponent<MovableObject>().isOnPlace = true;
-            other.gameObject.transform.position = this.gameObject.transform.position;
+            if(positionToHave != new Vector3(0, 0, 0))
+            {
+                other.gameObject.transform.position = positionToHave;
+            }
+            else
+            {
+                other.gameObject.transform.position = this.gameObject.transform.position;
+                
+            }
             other.gameObject.transform.rotation = rotationToHave;
             other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
             Debug.Log("LE DEMON MDR");
         }

@@ -24,7 +24,7 @@ public class _Enigme : MonoBehaviour
         }
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         foreach (MovableObject item in arrMovObj)
         {
@@ -50,6 +50,9 @@ public class _Enigme : MonoBehaviour
             if (other.CompareTag("Player") && movableObject == true && !isActivated)
             {
 
+                other.gameObject.GetComponent<_RayCastEnigma>().isOnSpot = true;
+                other.gameObject.GetComponent<_RayCastEnigma>().currentID = id;
+                other.gameObject.GetComponent<_RayCastEnigma>().doorToOpen = door;
 
             }
             else

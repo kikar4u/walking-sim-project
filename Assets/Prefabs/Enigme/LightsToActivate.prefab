@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 6387589538488418844}
   - component: {fileID: 409230768410807399}
   - component: {fileID: 3920264591743362017}
+  - component: {fileID: 6540546758809171101}
   m_Layer: 0
   m_Name: LightsToActivate
   m_TagString: Untagged
@@ -384,6 +385,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isActive: 0
 --- !u!65 &3920264591743362017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -395,5 +397,18 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0.7122711, z: 0}
+  m_Size: {x: 1.5, y: 1.3606135, z: 1.5}
+  m_Center: {x: 0, y: 0.6425778, z: 0}
+--- !u!114 &6540546758809171101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047936805673293990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b8ea3e3833df348a1d1859d6a740bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 5725656441958562268, guid: 864c5c83eec2da147a2e45a6d76b9d80, type: 3}
