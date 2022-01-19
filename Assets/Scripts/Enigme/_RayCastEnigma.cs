@@ -37,7 +37,7 @@ public class _RayCastEnigma : MonoBehaviour
     {
         Transform cameraTransform = Camera.main.transform;
         RaycastHit HitInfo;
-        Physics.SphereCast(cameraTransform.position, cameraTransform.position.x / 2, transform.forward, out HitInfo, 10);
+        //Physics.SphereCast(cameraTransform.position, cameraTransform.position.x / 2, transform.forward, out HitInfo, 10);
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
         {
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
