@@ -11,7 +11,7 @@ public class SceneFader : MonoBehaviour
 	public float fadeSpeed = 0.8f;
     public void Start()
     {
-		//StartCoroutine(Fade(FadeDirection.Out));
+		StartCoroutine(Fade(FadeDirection.Out));
 	}
     public enum FadeDirection
 	{

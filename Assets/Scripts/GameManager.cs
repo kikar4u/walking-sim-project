@@ -6,9 +6,12 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public List<_Enigme> enigmeList;
+    public static bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        isPaused = false;
         enigmeList = new List<_Enigme>();
         GameObject[] arrG = GameObject.FindGameObjectsWithTag("enigmeTri");
         foreach (GameObject item in arrG)
