@@ -32,7 +32,11 @@ public class _RayCastEnigma : MonoBehaviour
        SoundM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundFXManager>();
 
     }
+    private void Update()
+    {
 
+
+    }
     private void FixedUpdate()
     {
         Transform cameraTransform = Camera.main.transform;
@@ -40,7 +44,8 @@ public class _RayCastEnigma : MonoBehaviour
         //Physics.SphereCast(cameraTransform.position, cameraTransform.position.x / 2, transform.forward, out HitInfo, 10);
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
         {
-            Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
+
+            //Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
             if (HitInfo.transform.CompareTag("Enigma") && isOnSpot)
             {
 

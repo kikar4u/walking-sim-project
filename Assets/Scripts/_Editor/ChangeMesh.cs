@@ -7,7 +7,7 @@ public class ChangeMesh : MonoBehaviour
 {
     public Color32 color = new Color32(255, 255, 255, 255);
     private Mesh mesh;
-    public Mesh org;
+    public Mesh org = null;
     private MeshFilter mf;
     private MeshCollider mc;
     private bool isenabled = false;

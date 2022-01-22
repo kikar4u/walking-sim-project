@@ -7,11 +7,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public List<_Enigme> enigmeList;
     public static bool isPaused = false;
+    public static bool isLooking = false;
+    public static Transform currentLookingObject;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         isPaused = false;
+        isLooking = false;
         enigmeList = new List<_Enigme>();
         GameObject[] arrG = GameObject.FindGameObjectsWithTag("enigmeTri");
         foreach (GameObject item in arrG)
@@ -20,6 +23,14 @@ public class GameManager : MonoBehaviour
         }
         enigmeList = enigmeList.OrderBy(w => w.id).ToList();
 
+    }
+    private void Update()
+    {
+        //Debug.Log("is looking : "+ isLooking);
+        if (isLooking)
+        {
+           // Cursor.lockState = CursorLockMode.Confined;
+        }
     }
     // faire une fonction pour vérifier que l'énigme précédente à bien été faites ici, fonction qu'on appellera 
     // dans le reste enigme.cs
