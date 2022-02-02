@@ -30,6 +30,7 @@ public class _Enigme : MonoBehaviour
         {
             if (!item.isOnPlace)
             {
+                
                 movableObject = false;
                 break;
             }

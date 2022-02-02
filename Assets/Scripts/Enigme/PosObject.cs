@@ -4,7 +4,7 @@ public class PosObject : MonoBehaviour
 {
     [SerializeField]
     public int idObject;
-    [SerializeField] Quaternion rotationToHave;
+    [SerializeField] Vector3 rotationToHave;
     [SerializeField] Vector3 positionToHave;
     private void OnTriggerEnter(Collider other)
     {
@@ -22,11 +22,11 @@ public class PosObject : MonoBehaviour
                     other.gameObject.transform.position = this.gameObject.transform.position;
 
                 }
-                other.gameObject.transform.rotation = rotationToHave;
+                other.gameObject.transform.rotation = Quaternion.Euler(rotationToHave);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-                Debug.Log("LE DEMON MDR");
+                //Debug.Log("LE DEMON MDR");
             }
             else
             {
@@ -40,11 +40,11 @@ public class PosObject : MonoBehaviour
                     other.gameObject.transform.position = this.gameObject.transform.position;
 
                 }
-                other.gameObject.transform.rotation = rotationToHave;
+                other.gameObject.transform.rotation = Quaternion.Euler(rotationToHave);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-                Debug.Log("LE DEMON MDR");
+                //Debug.Log("LE DEMON MDR");
             }
 
         }
@@ -54,9 +54,9 @@ public class PosObject : MonoBehaviour
         if (other.gameObject.tag == "MovableObject")
         {
             other.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            other.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+            //other.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
             other.GetComponent<MovableObject>().isOnPlace = false;
-            Debug.Log("LE DEMON plus la");
+            //Debug.Log("LE DEMON plus la");
         }
     }
 }

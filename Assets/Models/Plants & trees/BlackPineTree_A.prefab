@@ -788,7 +788,7 @@ Material:
     - Diffusion_Profile: 3.5648174
     - EFFECT_EXTRA_TEX: 1
     - _AddPrecomputedVelocity: 0
-    - _AlphaClipThreshold: 0.1
+    - _AlphaClipThreshold: 0.154
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
@@ -805,7 +805,7 @@ Material:
     - _DstBlend: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
-    - _Glossiness: 0.388
+    - _Glossiness: 0
     - _HueVariationKwToggle: 1
     - _NormalMapKwToggle: 1
     - _OpaqueCullMode: 2

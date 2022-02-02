@@ -13,8 +13,8 @@ public class ObjectGrab : MonoBehaviour
         var playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         var objectPosition = this.transform.position;
         
-        if (objectPosition.x - playerPosition.x <= 2 && objectPosition.x - playerPosition.x >= -2
-            && objectPosition.z - playerPosition.z <= 2 && objectPosition.z - playerPosition.z >= -2)
+        if (objectPosition.x - playerPosition.x <= 3 && objectPosition.x - playerPosition.x >= -3
+            && objectPosition.z - playerPosition.z <= 3 && objectPosition.z - playerPosition.z >= -3)
         {
             Destination = GameObject.FindGameObjectWithTag("Destination").transform;
             GetComponent<MeshCollider>().isTrigger = true;

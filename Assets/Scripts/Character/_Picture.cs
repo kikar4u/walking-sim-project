@@ -63,7 +63,7 @@ public class _Picture : MonoBehaviour
         {
 
             dofComponent = tmp;
-            Debug.Log(dofComponent.focusDistance);
+            //Debug.Log(dofComponent.focusDistance);
         }
     }
     public IEnumerator backToPos(Vector3 playerPosition, float timer = 2.0f)

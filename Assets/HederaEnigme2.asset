@@ -20,8 +20,8 @@ MonoBehaviour:
     collisionMask:
       serializedVersion: 2
       m_Bits: 4294967291
-    branchMaterial: {fileID: 0}
-    leafMaterial: {fileID: 0}
+    branchMaterial: {fileID: 2100000, guid: b8c5a0b23271f22489c04ae2d9bfc597, type: 2}
+    leafMaterial: {fileID: 2100000, guid: 969642582164f974ca5f2c05cdd4633d, type: 2}
     ivyStepDistance: 0.1
     ivyLeafSize: 0.15
     ivyBranchSize: 0.05
