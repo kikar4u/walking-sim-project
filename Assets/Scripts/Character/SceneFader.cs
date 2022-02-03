@@ -36,6 +36,7 @@ public class SceneFader : MonoBehaviour
 		{
 			while (alpha >= fadeEndValue)
 			{
+				Debug.Log("Hello");
 				SetColorImage(ref alpha, fadeDirection);
 				yield return null;
 			}
@@ -56,6 +57,7 @@ public class SceneFader : MonoBehaviour
 	#region HELPERS
 	public IEnumerator FadeAndLoadScene(FadeDirection fadeDirection, string sceneToLoad)
 	{
+		
 		yield return Fade(fadeDirection);
 		SceneManager.LoadScene(sceneToLoad);
 	}
