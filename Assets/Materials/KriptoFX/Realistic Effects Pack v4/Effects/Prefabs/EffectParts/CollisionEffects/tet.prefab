@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114923380478825616, guid: d8dc9cc283ad7df45ae1b14f1fe58dbc, type: 3}
+      propertyPath: ParticlesBudget
+      value: 0.154
+      objectReference: {fileID: 0}
     - target: {fileID: 182441474470432736, guid: d8dc9cc283ad7df45ae1b14f1fe58dbc, type: 3}
       propertyPath: m_Mode
       value: 0

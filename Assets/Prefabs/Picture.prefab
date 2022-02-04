@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7182899816359521322}
   - component: {fileID: 2919771985970978608}
   - component: {fileID: 3542465501796787820}
+  - component: {fileID: 6659981186667840282}
   m_Layer: 3
   m_Name: Picture
   m_TagString: picture
@@ -60,3 +61,16 @@ MonoBehaviour:
   firstPosition: {fileID: 7182899816359521322}
   sensitivity: 2
   speed: 3
+--- !u!114 &6659981186667840282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164626957313242452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa473e43c4b4494a93b889c1c247208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPos: {x: 0, y: 0, z: 0}

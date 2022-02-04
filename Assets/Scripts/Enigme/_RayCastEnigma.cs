@@ -50,7 +50,7 @@ public class _RayCastEnigma : MonoBehaviour
                 touchedObject = hitInfo.transform.GetChild(0).gameObject;
                 touchedObject.GetComponent<Renderer>().material.SetColor("_EmissiveColor", Color.white * 0.1f);
             }
-            else
+            else if(touchedObject != null)
             {
                 Debug.Log("HEY OH");
                 touchedObject.GetComponent<Renderer>().material.SetColor("_EmissiveColor", Color.white * 0);

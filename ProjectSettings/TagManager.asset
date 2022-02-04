@@ -11,6 +11,7 @@ TagManager:
   - enigmeTri
   - Destination
   - OOB
+  - picture
   layers:
   - Default
   - TransparentFX
