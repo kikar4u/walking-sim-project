@@ -36,7 +36,7 @@ public class SceneFader : MonoBehaviour
 		{
 			while (alpha >= fadeEndValue)
 			{
-				Debug.Log("Hello");
+				
 				SetColorImage(ref alpha, fadeDirection);
 				yield return null;
 			}

@@ -24,7 +24,7 @@ public class _RayCastEnigma : MonoBehaviour
     [HideInInspector]
     public GameManager GM;
     public SoundFXManager SoundM;
-    
+    GameObject touchedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,16 +40,28 @@ public class _RayCastEnigma : MonoBehaviour
     private void FixedUpdate()
     {
         Transform cameraTransform = Camera.main.transform;
-        RaycastHit HitInfo;
+        RaycastHit hitInfo;
         //Physics.SphereCast(cameraTransform.position, cameraTransform.position.x / 2, transform.forward, out HitInfo, 10);
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hitInfo, 1000.0f))
         {
 
+            if(hitInfo.transform.gameObject.tag == "picture" && !GameManager.isLooking)
+            {
+                touchedObject = hitInfo.transform.GetChild(0).gameObject;
+                touchedObject.GetComponent<Renderer>().material.SetColor("_EmissiveColor", Color.white * 0.1f);
+            }
+            else
+            {
+                Debug.Log("HEY OH");
+                touchedObject.GetComponent<Renderer>().material.SetColor("_EmissiveColor", Color.white * 0);
+                touchedObject = null;
+
+            }
             //Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000.0f, Color.yellow);
-            if (HitInfo.transform.CompareTag("Enigma") && isOnSpot)
+            if (hitInfo.transform.CompareTag("Enigma") && isOnSpot)
             {
 
-                HitInfo.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
+                hitInfo.transform.gameObject.TryGetComponent<_Enigme>(out _Enigme component);
                
                 if (!isRunning)
                 {
@@ -61,8 +73,8 @@ public class _RayCastEnigma : MonoBehaviour
                     
                     StartCoroutine(StartCountdown(enigmeTrigger, timeToEnigma));
                     Vfx2 = GameObject.Instantiate(feedbackEffect);
-                    Vfx2.transform.position = HitInfo.point;
-                    Vfx2.transform.rotation = HitInfo.transform.rotation;
+                    Vfx2.transform.position = hitInfo.point;
+                    Vfx2.transform.rotation = hitInfo.transform.rotation;
                     
                     //Vfx = GameObject.Instantiate(feedBackParticle);
                     //Vfx.transform.position = HitInfo.point;
@@ -75,6 +87,7 @@ public class _RayCastEnigma : MonoBehaviour
             }
 
         }
+
         if (!isOnSpot)
         {
             StopAllCoroutines();

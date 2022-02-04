@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scene/Menu.unity
     guid: aeaab01fafd5ec14e9f19e15e5cdc508
+  - enabled: 1
+    path: Assets/_Scene/CineIntro.unity
+    guid: cc17afb59e7ad564aacccb2ece2ab42b
+  - enabled: 1
+    path: Assets/_Scene/LEVEL.unity
+    guid: 9bd97499d922cfd4c84317afa272af99
   - enabled: 0
     path: Assets/_Scene/1erniveau.unity
     guid: 3438928bf75a5bd4c9c8095dc1647887
@@ -17,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scene/Essaie 1.unity
     guid: ae8ec09a6a359cc47908fdedde3f5593
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scene/Diorama.unity
     guid: 765fe285f9ec6ad45add30c69c196933
   m_configObjects: {}
