@@ -16,6 +16,7 @@ public class GetPos : MonoBehaviour
         if(collision.gameObject.tag == "OOB")
         {
             gameObject.transform.position = firstPos;
+            gameObject.transform.rotation = Quaternion.identity;
         }
     }
 }
