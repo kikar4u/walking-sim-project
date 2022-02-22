@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "ca.andydbc.unity-texture-packer": {
-      "version": "file:C:/Users/Sylve/Desktop/unity-texture-packer-0.1.0",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.radiatoryang.hedera": {
       "version": "https://github.com/radiatoryang/hedera.git",
       "depth": 0,
